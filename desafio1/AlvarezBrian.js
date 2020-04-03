@@ -10,12 +10,10 @@ let mapper = auxAr.map(function(i){
             .split(":");
 });
 //Obtenemos los minutos por separado y se multiplican por 60 segundos
-var minutos = mapper.map(x => parseInt(x) * 60).reduce((a,b) => a+b);    
-console.log(minutos);
+var minutos = mapper.map(x => parseInt(x) * 60).reduce((a,b) => a+b);   
 //Obtenemos los segundos
 var segundos = mapper.reduce(function(acum, vActual){
     return parseInt(acum) + parseInt(vActual[1]);
 },0);
-console.log(segundos);
 //Salida por pantalla
 console.log(`El total de segundos calculados para Flexbox Video es  ${minutos + segundos}`);  
