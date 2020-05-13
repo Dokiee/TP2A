@@ -3,9 +3,7 @@ const chalk = require('chalk');
 
 const uri = "mongodb+srv://admin:betp2@cluster0-zdy6w.mongodb.net/test?retryWrites=true&w=majority";
 const client = new mongoclient(uri, {useNewUrlParser:true, useUnifiedTopology:true});
-
-
-
+ 
 const CRUD = new Promise((resolve,reject) => {
     resolve(client.connect((err, result) =>{
                         if(!err){
@@ -15,7 +13,6 @@ const CRUD = new Promise((resolve,reject) => {
                             printCollection(collection);   
                             console.log(chalk.gray("Comienzan las acciones CRUD:"));
                             accionesCrud(collection);
-
                         } else {
                             console.log(chalk.red(err));
                         }
@@ -60,6 +57,7 @@ async function accionesCrud(collection){
         .catch(err => {
             console.log(chalk.red("Error en borrado de registro.", err));
     });
+    client.close();
 }
 
 function insertIntoCollection(collection, newInventor){
